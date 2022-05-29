@@ -74,3 +74,4 @@ The **core web application** will support basic CRUD (Create, Read, Update, Dele
 - [Project Video](https://drive.google.com/file/d/1pg-N62fxiEzsbaExhlBiufve4H0gviJB/view?usp=sharing)
 - [Project Log](https://docs.google.com/spreadsheets/d/1qyYAI4xEDxlCCG3IyzlDAnqgQwfhd_8biwHQM1JzAqI/edit?usp=sharing)
 - [Figma Prototype (WIP)](https://www.figma.com/proto/2vEriPljl65Etd0ZpulQhw/Kachow!?node-id=221%3A1919&scaling=scale-down&page-id=221%3A1890&starting-point-node-id=221%3A1919&show-proto-sidebar=1)
+- [Web Application (hosted on Netlify)](https://enchanting-piroshki-538dcd.netlify.app/)
