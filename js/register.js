@@ -1,7 +1,8 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.2/firebase-app.js";
 import {
   getAuth,
-  createUserWithEmailAndPassword
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword
 } from "https://www.gstatic.com/firebasejs/9.8.2/firebase-auth.js";
 import {
   getFirestore,
@@ -94,3 +95,24 @@ function createUser() {
       console.log(errorCode, errorMessage);
     });
 }
+
+// login handlers
+const email = document.getElementById("loginEmail");
+const pass = document.getElementById("loginPassword");
+const loginForm = document.getElementById("loginForm");
+
+loginForm.addEventListener("submit", function () {
+  console.log(email.value, pass.value);
+  signInWithEmailAndPassword(auth, email.value, pass.value)
+    .then((userCredential) => {
+      const user = userCredential.user;
+      console.log("login successful");
+      window.location.replace("main.html");
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.log(error);
+      alert("Invalid account credentials!")
+    });
+});
