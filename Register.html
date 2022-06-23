@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"
+    />
+
+    <link rel="stylesheet" href="MainStyle.css" />
+    <title>Enroll</title>
+  </head>
+  <body>
+            <!-- Nav bar -->
+            <nav class="navbar navbar-expand-lg bg-white navbar-light py-3 fixed-top">
+              <div class="container-fluid">
+                <a href="Main.html" class="navbar-brand"><img class="img-fluid w-50 d-none d-sm-block" src="img/BBDC logo.png" alt="logo"></a>
+      
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+        
+                <div class="collapse navbar-collapse" id="navmenu">
+                  <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                      <a href="#about" class="nav-link">About us</a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="#courses" class="nav-link">Courses</a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="#faq" class="nav-link">FAQ</a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="Register.html" class="nav-link">Sign up</a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target= "#logIn">Log-In</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+          </nav>
+      
+          <section class="loginForm">
+            <div id="logIn" class="modal fade" role="dialog" >
+              <div class="modal-dialog modal-login">
+                  <div class="modal-content">
+                      <!-- <form action="" method=""> -->
+                          <div class="modal-header">				
+                              <h4 class="modal-title">Login</h4>
+                              <button type="button" class="close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
+                          </div>
+                          <div class="modal-body">				
+                              <div class="form-group">
+                                  <label>Email</label>
+                                  <input type="text" class="form-control" required="required">
+                              </div>
+                              <div class="form-group">
+                                  <div class="clearfix">
+                                      <label>Password</label>
+                                      <a class="frgt-pswd float-end text-muted" data-bs-toggle="modal" data-bs-dismiss="modal"  data-bs-target="#at-reset-pswd" href="#"><small>Forgot?</small></a>
+                                  </div>
+                                  
+                                  <input type="password" class="form-control" required="required">
+                              </div>
+                          </div>
+                          <div class="modal-footer justify-content-between">
+                              <label class="form-check-label"><input type="checkbox"> Remember me</label>
+                              <input type="submit" class="btn btn-primary" value="Login">
+                          </div>
+                      </form>
+                  </div>
+              </div>
+          </div>
+          
+          <div class="modal fade" id="at-reset-pswd" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="modal-body">
+                  <form>
+                    <p>	Enter the email address associated with your account, and we’ll email you a link to reset your password. </p>
+                    <div class="form-group">
+      
+                      <input type="email" class="form-control-form " id="exampleInputEmaillog" placeholder="Email">
+                    </div>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+
+    <!--fields -->
+    <section class="vh-100">
+      <div class="container py-5 h-100">
+        <div class="row justify-content-center align-items-center h-100">
+          <div class="col-12 col-lg-9 col-xl-7">
+            <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
+              <div class="card-body p-4 p-md-5">
+                <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Registration Form</h3>
+                <form>
+    
+                  <div class="row">
+                    <div class="col-md-6 mb-4">
+    
+                      <div class="form-outline">
+                        <input type="text" id="firstName" class="form-control form-control-lg" required="required"/>
+                        <label class="form-label" for="firstName">First Name</label>
+                      </div>
+    
+                    </div>
+                    <div class="col-md-6 mb-4">
+    
+                      <div class="form-outline">
+                        <input type="text" id="lastName" class="form-control form-control-lg" required="required"/>
+                        <label class="form-label" for="lastName">Last Name</label>
+                      </div>
+    
+                    </div>
+                  </div>
+    
+                  <div class="row">
+                    <div class="col-md-6 mb-4 d-flex align-items-center">
+    
+                      <div class="form-outline datepicker w-100">
+                        <input type="date" class="form-control form-control-lg" id="birthdayDate" required="required"/>
+                        <label for="birthdayDate" class="form-label">Date Of Birth</label>
+                      </div>
+    
+                    </div>
+                    <div class="col-md-6 mb-4">
+    
+                      <h6 class="mb-2 pb-1">Gender: </h6>
+    
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="femaleGender"
+                          value="option1" checked required="required"/>
+                        <label class="form-check-label" for="femaleGender">Female</label>
+                      </div>
+    
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="maleGender"
+                          value="option2" required="required"/>
+                        <label class="form-check-label" for="maleGender">Male</label>
+                      </div>
+    
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="otherGender"
+                          value="option3" required="required"/>
+                        <label class="form-check-label" for="otherGender">Other</label>
+                      </div>
+    
+                    </div>
+                  </div>
+    
+                  <div class="row">
+                    <div class="col-md-6 mb-4 pb-2">
+    
+                      <div class="form-outline">
+                        <input type="email" id="emailAddress" class="form-control form-control-lg" required="required"/>
+                        <label class="form-label" for="emailAddress">Email</label>
+                      </div>
+    
+                    </div>
+                    <div class="col-md-6 mb-4 pb-2">
+    
+                      <div class="form-outline">
+                        <input type="tel" id="phoneNumber" class="form-control form-control-lg" required="required"/>
+                        <label class="form-label" for="phoneNumber">Phone Number</label>
+                      </div>
+    
+                    </div>
+                  </div>
+    
+                  <div class="row">
+                    <div class="col-md-6 mb-4">
+    
+                      <div class="form-outline">
+                        <input type="text" id="Address" class="form-control form-control-lg" required="required"/>
+                        <label class="form-label" for="Address">Address</label>
+                      </div>
+    
+                    </div>
+                    <div class="col-md-6 mb-4">
+    
+                      <div class="form-outline">
+                        <input type="text" id="postalCode" class="form-control form-control-lg" required="required"/>
+                        <label class="form-label" for="postalCode">Postal Code</label>
+                      </div>
+    
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-12 mb-4 pb-2">
+    
+                      <select class="select form-control-lg">
+                        <option value="1">Choose course</option>
+                        <option value="2">Class 2</option>
+                        <option value="3">Class 2A</option>
+                        <option value="4">Class 2B</option>
+                        <option value="4">Class 3</option>
+                        <option value="4">Class 3A</option>
+                      </select>
+                      <label class="form-label select-label">Course to be enrolled in</label>
+    
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-6 mb-4">
+    
+                      <div class="form-outline">
+                        <input type="password" id="password" class="form-control form-control-lg" required="required"/>
+                        <label class="form-label" for="password">Password</label>
+                      </div>
+    
+                    </div>
+                    <div class="col-md-6 mb-4">
+    
+                      <div class="form-outline">
+                        <input type="password" id="repeatPassword" class="form-control form-control-lg" required="required"/>
+                        <label class="form-label" for="repeatPassword">Repeat Password</label>
+                      </div>
+    
+                    </div>
+                  </div>
+
+                  <div class="form-check d-flex  mb-5">
+                    <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3c" required="required"/>
+                    <label class="form-check-label" for="form2Example3">
+                      I agree all statements in <a href="#!">Terms of service</a>
+                    </label>
+                  </div>
+    
+                  <div class="mt-4 pt-2">
+                    <input class="btn btn-primary btn-lg" type="submit" value="Submit" />
+                  </div>
+
+                  <p class="text-center text-muted mt-5 mb-0">Have already an account? <a href="#!"
+                    class="fw-bold text-body" data-bs-toggle="modal" data-bs-target= "#logIn"><u>Login here</u></a></p>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <section class="loginForm">
+        <div id="logIn" class="modal fade" role="dialog" >
+          <div class="modal-dialog modal-login">
+              <div class="modal-content">
+                  <!-- <form action="" method=""> -->
+                      <div class="modal-header">				
+                          <h4 class="modal-title">Login</h4>
+                          <button type="button" class="close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
+                      </div>
+                      <div class="modal-body">				
+                          <div class="form-group">
+                              <label>Email</label>
+                              <input type="text" class="form-control" required="required">
+                          </div>
+                          <div class="form-group">
+                              <div class="clearfix">
+                                  <label>Password</label>
+                                  <a class="frgt-pswd float-end text-muted" data-bs-toggle="modal" data-bs-dismiss="modal"  data-bs-target="#at-reset-pswd" href="#"><small>Forgot?</small></a>
+                              </div>
+                              
+                              <input type="password" class="form-control" required="required">
+                          </div>
+                      </div>
+                      <div class="modal-footer justify-content-between">
+                          <label class="form-check-label"><input type="checkbox"> Remember me</label>
+                          <input type="submit" class="btn btn-primary" value="Login">
+                      </div>
+                  </form>
+              </div>
+          </div>
+      </div>
+      
+      <div class="modal fade" id="at-reset-pswd" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <p>	Enter the email address associated with your account, and we’ll email you a link to reset your password. </p>
+                <div class="form-group">
+  
+                  <input type="email" class="form-control-form " id="exampleInputEmaillog" placeholder="Email">
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    
+      <script src=”https://code.jquery.com/jquery-3.2.1.slim.min.js” integrity=”sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN” crossorigin=”anonymous”></script>
+
+      <script src=https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js integrity=”sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q” crossorigin=”anonymous”></script>
+      
+      <script src=”https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js” integrity=”sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl” crossorigin=”anonymous”></script>
+      
+      
+    <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+        crossorigin="anonymous"></script>
+
+    </body>
+</html>
