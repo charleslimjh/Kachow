@@ -37,7 +37,7 @@ function createUser() {
   const dob = document.getElementById("birthdayDate").value;
   const email = document.getElementById("emailAddress").value;
   const phone = document.getElementById("phoneNumber").value;
-  const address = document.getElementById("Address").value;
+  const address = document.getElementById("address").value;
   const postalCode = document.getElementById("postalCode").value;
   const pass = document.getElementById("password").value;
 
@@ -51,7 +51,6 @@ function createUser() {
 
   const select = document.getElementById("course");
   const course = select.options[select.selectedIndex].value;
-
 
   console.log({
     firstName: firstName,
