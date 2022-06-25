@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"
+    />
+    <link rel="stylesheet" href="DateTimeSelect.css" />
+    <title>Booking</title>
+  </head>
+  <body>
+
+<!-- nav bar-->
+<nav class="navbar navbar-expand-lg bg-white navbar-light py-3 fixed-top" style="height: 100px">
+  <div class="container-fluid">
+    <a href="Welcome.html" class="navbar-brand"><img class="img-fluid w-50 d-none d-sm-block" src="img/BBDC logo.png" alt="logo"></a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navmenu">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a href="Booking.html" class="nav-link">Booking</a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">Top up</a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">Forum</a>
+        </li>
+        <li class="nav-item">
+          <a href="Account.html" class="nav-link">My Account</a>
+        </li>
+        <li class="nav-item">
+          <a href="MainPage.html" class="nav-link">Sign out</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!--datepicker-->
+<div class="container-fluid px-0 px-sm-4 mx-auto pt-5">
+  <div class="row justify-content-center mx-0">
+    <div class="col-lg-10">
+      <div class="card border-0">
+        <form autocomplete="off">
+          <div class="card-header bg-dark">
+            <div class="mx-0 mb-0 row justify-content-sm-center justify-content-start px-1">
+              <input type="text" id="dp1" class="datepicker" placeholder="Pick Date" name="date" readonly><span class="fas fa-calendar"></span>
+            </div>
+          </div>
+          <div class="card-body p-3 p-sm-5">
+            <div class="row text-center mx-0">
+              <div class="col-md-2 col-4 my-1 px-2"><div class="cell py-1">9:00AM</div></div>
+              <div class="col-md-2 col-4 my-1 px-2"><div class="cell py-1">9:30AM</div></div>
+              <div class="col-md-2 col-4 my-1 px-2"><div class="cell py-1">9:45AM</div></div>
+              <div class="col-md-2 col-4 my-1 px-2"><div class="cell py-1">10:00AM</div></div>
+              <div class="col-md-2 col-4 my-1 px-2"><div class="cell py-1">10:30AM</div></div>
+              <div class="col-md-2 col-4 my-1 px-2"><div class="cell py-1">10:45AM</div></div>
+            </div>
+            <div class="row text-center mx-0">
+              <div class="col-md-2 col-4 my-1 px-2"><div class="cell py-1">11:00AM</div></div>
+              <div class="col-md-2 col-4 my-1 px-2"><div class="cell py-1">11:30AM</div></div>
+              <div class="col-md-2 col-4 my-1 px-2"><div class="cell py-1">11:45AM</div></div>
+              <div class="col-md-2 col-4 my-1 px-2"><div class="cell py-1">12:00PM</div></div>
+              <div class="col-md-2 col-4 my-1 px-2"><div class="cell py-1">12:30PM</div></div>
+              <div class="col-md-2 col-4 my-1 px-2"><div class="cell py-1">12:45PM</div></div>
+            </div>
+            <div class="row text-center mx-0">
+              <div class="col-md-2 col-4 my-1 px-2"><div class="cell py-1">1:00PM</div></div>
+              <div class="col-md-2 col-4 my-1 px-2"><div class="cell py-1">1:30PM</div></div>
+              <div class="col-md-2 col-4 my-1 px-2"><div class="cell py-1">1:45PM</div></div>
+              <div class="col-md-2 col-4 my-1 px-2"><div class="cell py-1">2:00PM</div></div>
+              <div class="col-md-2 col-4 my-1 px-2"><div class="cell py-1">2:30PM</div></div>
+              <div class="col-md-2 col-4 my-1 px-2"><div class="cell py-1">2:45PM</div></div>
+            </div>
+            <div class="row text-center mx-0">
+              <div class="col-md-2 col-4 my-1 px-2"><div class="cell py-1">3:00PM</div></div>
+              <div class="col-md-2 col-4 my-1 px-2"><div class="cell py-1">3:30PM</div></div>
+              <div class="col-md-2 col-4 my-1 px-2"><div class="cell py-1">4:15PM</div></div>
+              <div class="col-md-2 col-4 my-1 px-2"><div class="cell py-1">5:00PM</div></div>
+            </div>
+          </div>
+
+          <div class="container pb-5">
+            <div class="row">
+                <div class="col-md-2 text-right">
+                  <a href="BT.html">
+                    <button type="button" class="btn btn-primary">Cancel</button>
+                  </a>
+                </div>
+                <div class = "col-md-7 text-right">
+                  <a href="BookingConfirmation.html">
+                    <button type="button" class="btn btn-primary ml-2">Submit</button>
+                  </a>
+                </div>
+            </div>
+        </div>
+
+        </form>
+
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+
+<script type="text/javascript">
+$('.datepicker').datepicker({
+    format: 'dd-mm-yyyy',
+    autoclose: true,
+    startDate: '0d'
+});
+</script>
+
+
+
+<script src=”https://code.jquery.com/jquery-3.2.1.slim.min.js” integrity=”sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN” crossorigin=”anonymous”></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js integrity=”sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q” crossorigin=”anonymous”></script>
+<script src=”https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js” integrity=”sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl” crossorigin=”anonymous”></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css" />
+<script src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js"></script>            
+<script src="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/3.0.0/js/bootstrap-datetimepicker.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+        crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/css/bootstrap-responsive.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.js"></script>
+
+  </body>
+</html>

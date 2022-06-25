@@ -14,7 +14,7 @@ body {
   }
     
 
-  .modal-login {
+.modal-login {
 	width: 320px;
 }
 .modal-login .modal-content {
@@ -72,4 +72,8 @@ body {
 	color: #999;
 }
 
+.container a {
+	color: white;
+	text-decoration: none;
+}
   
