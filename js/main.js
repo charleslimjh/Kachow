@@ -5,6 +5,11 @@ import {
   onAuthStateChanged,
   signOut,
 } from "https://www.gstatic.com/firebasejs/9.8.2/firebase-auth.js";
+import {
+  getFirestore,
+  doc,
+  getDoc,
+} from "https://www.gstatic.com/firebasejs/9.8.2/firebase-firestore.js";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -21,11 +26,13 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth();
+const db = getFirestore(app);
 
 // Ensure user is logged in
 auth.onAuthStateChanged((user) => {
   if (user) {
     document.getElementById("body").style.display = "block";
+    getInfo(user);
   } else {
     window.location.replace("/index.html");
   }
@@ -45,3 +52,18 @@ signOutLink.addEventListener("click", () => {
       console.log("Error occurred.");
     });
 });
+
+// Display account info
+function getInfo(user) {
+  const account = user.email;
+  const docRef = doc(db, "accounts", account);
+  getDoc(docRef)
+    .then((docSnap) => {
+      // Placeholder code to display information
+      const name = document.getElementById("userName");
+      name.innerText = " " + docSnap.get("firstName") + " ";
+    })
+    .catch(() => {
+      console.log("something went wrong.");
+    });
+}
