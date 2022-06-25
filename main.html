@@ -18,39 +18,48 @@
     <script type="module" src="js/main.js"></script>
     <title>BBDC Portal</title>
   </head>
+
   <body id="body" style="display: none">
+    <!-- Nav bar -->
+    <nav class="navbar navbar-expand-lg bg-white navbar-light py-3 fixed-top">
+      <div class="container-fluid">
+        <a href="#" class="navbar-brand"
+          ><img
+            class="img-fluid w-50 d-none d-sm-block"
+            src="img/BBDC logo.png"
+            alt="logo"
+        /></a>
 
-  <!-- Nav bar -->
-  <nav class="navbar navbar-expand-lg bg-white navbar-light py-3 fixed-top">
-    <div class="container-fluid">
-      <a href="#" class="navbar-brand"><img class="img-fluid w-50 d-none d-sm-block" src="img/BBDC logo.png" alt="logo"></a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navmenu"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse" id="navmenu">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item">
-            <a href="#" class="nav-link">Booking</a>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">Top up</a>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">Forum</a>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">My Account</a>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link" id="signOut">Sign out</a>
-          </li>
-        </ul>
+        <div class="collapse navbar-collapse" id="navmenu">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a href="#" class="nav-link">Booking</a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">Top up</a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">Forum</a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">My Account</a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link" id="signOut">Sign out</a>
+            </li>
+          </ul>
+        </div>
       </div>
-    </div>
-  </nav>
-
+    </nav>
 
     <!--Welcome -->
     <section class="bg-white text-dark p-5 p-lg-0 pt-lg-5 text-center">
@@ -81,4 +90,5 @@
       integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
       crossorigin="anonymous"
     ></script>
+  </body>
 </html>
