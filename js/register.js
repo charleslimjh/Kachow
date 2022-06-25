@@ -52,17 +52,6 @@ function createUser() {
   const select = document.getElementById("course");
   const course = select.options[select.selectedIndex].value;
 
-  console.log({
-    firstName: firstName,
-    lastName: lastName,
-    dob: dob,
-    gender: gender,
-    phone: phone,
-    address: address,
-    postal: postalCode,
-    course: course,
-  })
-
   createUserWithEmailAndPassword(auth, email, pass)
     .then((userCredential) => {
       // Signed in, update profile name
@@ -81,16 +70,17 @@ function createUser() {
       })
         .then(() => {
           // Login user, redirect to main page
-          console.log("successfully updated firestore.");
           window.location.replace("main.html");
         })
         .catch((error) => {
-          console.log("error updating firestore");
+          alert("Server error, try again!")
+          console.log(error);
         });
     })
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
+      alert(errorMessage);
       console.log(errorCode, errorMessage);
     });
 }
@@ -105,13 +95,12 @@ loginForm.addEventListener("submit", function () {
   signInWithEmailAndPassword(auth, email.value, pass.value)
     .then((userCredential) => {
       const user = userCredential.user;
-      console.log("login successful");
       window.location.replace("main.html");
     })
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
+      alert("Invalid account credentials! Try again.")
       console.log(error);
-      alert("Invalid account credentials!")
     });
 });
