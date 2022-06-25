@@ -32,9 +32,9 @@ auth.onAuthStateChanged((user) => {
 });
 
 // Signout logic
-let signOutLink = document.getElementById("signOutLink");
+let signOutLink = document.getElementById("signOut");
 signOutLink.addEventListener("click", () => {
-  sessionStorage.removeItem("email");
+  console.log("logging out");
   signOut(auth)
     .then(() => {
       // Sign-out successful.
