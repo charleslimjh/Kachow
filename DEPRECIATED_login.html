@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>BBDC Signup</title>
+    <title>BBDC Login</title>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta
@@ -36,7 +36,7 @@
       <div class="navbar-collapse collapse w-100" id="collapsingNavbar3">
         <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
           <li class="nav-item">
-            <a class="nav-link" href="index.html">Login</a>
+            <a class="nav-link" href="#">Login</a>
           </li>
         </ul>
       </div>
@@ -44,60 +44,10 @@
 
     <div class="container-fluid">
       <div class="row mx-auto my-2">
-        <h2>Register Account</h2>
+        <h2>Login</h2>
       </div>
 
-      <form>
-        <div class="form-group">
-          <label for="inputFirstName">First Name</label>
-          <input
-            type="text"
-            id="inputName"
-            class="form-control"
-            placeholder="First Name"
-            required
-          />
-        </div>
-        <div class="form-group">
-          <label for="inputLastName">Last Name</label>
-          <input
-            type="text"
-            id="inputName"
-            class="form-control"
-            placeholder="Last Name"
-            required
-          />
-        </div>
-        <div class="form-group">
-          <label for="inputNRIC">NRIC</label>
-          <input
-            type="text"
-            id="inputNRIC"
-            class="form-control"
-            placeholder="NRIC"
-            required
-          />
-        </div>
-        <div class="form-group">
-          <label for="inputBirthday">Date of Birth</label>
-          <input
-            type="date"
-            id="inputBirthday"
-            class="form-control"
-            placeholder="Birthday"
-            required
-          />
-        </div>
-        <div class="form-group">
-          <label for="inputContact">Contact Number</label>
-          <input
-            type="contact"
-            id="inputName"
-            class="form-control"
-            placeholder=""
-            required
-          />
-        </div>
+      <form id="loginForm">
         <div class="form-group">
           <label for="inputEmail">Email Address</label>
           <input type="email" class="form-control" id="inputEmail" required />
@@ -111,19 +61,21 @@
             required
           />
         </div>
-        <div class="form-group">
-          <label for="inputCourse">Course Enrolled</label>
-          <select class="form-control" id="inputCourse">
-            <option>Class 2</option>
-            <option>Class 2A</option>
-            <option>Class 3</option>
-            <option>Class 3A</option>
-          </select>
-        </div>
         <button type="button" class="btn btn-primary" id="submitData">
-          Register
+          Log In
+        </button>
+        <button type="button" class="btn btn-primary" id="forgotPassword">
+          Forgot password? (placeholder)
         </button>
       </form>
+
+      <div class="row mt-2 mx-auto">
+        <p>
+          For Testing, use this to log in:<br />
+          Email:test@domain.com<br />
+          Password:Password1
+        </p>
+      </div>
     </div>
 
     <!-- Optional JavaScript -->
@@ -143,5 +95,56 @@
       integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
       crossorigin="anonymous"
     ></script>
+
+    <script type="module">
+      // Import functions
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.2/firebase-app.js";
+      import {
+        getAuth,
+        signInWithEmailAndPassword,
+      } from "https://www.gstatic.com/firebasejs/9.8.2/firebase-auth.js";
+
+      // Your web app's Firebase configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyBidlQBxSNmu562K-pmgzQabDAs6CAucV4",
+        authDomain: "kachow-67bdb.firebaseapp.com",
+        databaseURL:
+          "https://kachow-67bdb-default-rtdb.asia-southeast1.firebasedatabase.app",
+        projectId: "kachow-67bdb",
+        storageBucket: "kachow-67bdb.appspot.com",
+        messagingSenderId: "544603719345",
+        appId: "1:544603719345:web:0035b26a386e36b2774490",
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const auth = getAuth();
+
+      // References
+      const email = document.getElementById("inputEmail");
+      const pass = document.getElementById("inputPassword");
+      const submit = document.getElementById("submitData");
+
+      // Functions
+      function login(user) {
+        sessionStorage.setItem("email", JSON.stringify(user));
+        window.location.replace("main.html");
+      }
+
+      submit.addEventListener("click", function () {
+        signInWithEmailAndPassword(auth, email.value, pass.value)
+          .then((userCredential) => {
+            const user = userCredential.user;
+            console.log("login successful");
+            login(user);
+          })
+          .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            console.log(error);
+            alert("Invalid account credentials!")
+          });
+      });
+    </script>
   </body>
 </html>
