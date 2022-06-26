@@ -91,7 +91,6 @@ const pass = document.getElementById("loginPassword");
 const loginForm = document.getElementById("loginForm");
 
 loginForm.addEventListener("submit", function () {
-  console.log(email.value, pass.value);
   signInWithEmailAndPassword(auth, email.value, pass.value)
     .then((userCredential) => {
       const user = userCredential.user;
