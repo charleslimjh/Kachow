@@ -9,6 +9,10 @@ import {
   getFirestore,
   doc,
   getDoc,
+  collection,
+  setDoc,
+  updateDoc,
+  increment,
 } from "https://www.gstatic.com/firebasejs/9.8.2/firebase-firestore.js";
 
 // Your web app's Firebase configuration
@@ -73,3 +77,62 @@ new tempusDominus.TempusDominus(document.getElementById("datetimepicker4"), {
     },
   },
 });
+
+// Register booking in firebase
+const form = document.getElementById("form");
+form.addEventListener("submit", addData);
+
+function addData() {
+  let category = document.getElementById("category").value;
+  switch (category) {
+    case "Practical":
+      category = "practicals";
+      break;
+    case "Simulator":
+      category = "simulators";
+      break;
+    case "Theory":
+      category = "theory";
+      break;
+    default:
+      break;
+  }
+
+  const booking = document.getElementById("bookingType").value;
+  const date = document.getElementById("datetimepicker4Input").value;
+  const time = document.getElementById("time").value;
+
+  const bookingRef = doc(db, "bookings", category);
+  updateDoc(bookingRef, {
+    bookingNo: increment(1),
+  })
+    .then(() => {
+      console.log("incremented");
+      getDoc(bookingRef)
+        .then((docSnap) => {
+          console.log("retrieved");
+          const recordsRef = doc(
+            db,
+            "bookings/" + category + "/records/" + docSnap.get("bookingNo")
+          );
+          setDoc(recordsRef, {
+            bookingDesc: booking,
+            user: auth.currentUser.email,
+            datetime: date + " " + time,
+          }).then(() => {
+            window.location.replace("confirmation.html");
+          }).catch((error) => {
+            alert("error");
+            console.log(error);
+          });
+        })
+        .catch((error) => {
+          alert("unable to retrieve updated booking No.");
+          console.log(error);
+        });
+    })
+    .catch((error) => {
+      alert("unable to increment booking No.");
+      console.log(error);
+    });
+}
