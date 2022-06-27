@@ -9,6 +9,12 @@ import {
   getFirestore,
   doc,
   getDoc,
+  collectionGroup,
+  query,
+  where,
+  getDocs,
+  addDoc,
+  collection,
 } from "https://www.gstatic.com/firebasejs/9.8.2/firebase-firestore.js";
 
 // Your web app's Firebase configuration
@@ -65,5 +71,40 @@ function getInfo(user) {
     })
     .catch(() => {
       console.log("something went wrong.");
+    });
+
+  // TODO: modify query to only retrieve upcoming bookings
+  const bookings = query(
+    collectionGroup(db, "records"),
+    where("user", "==", account)
+  );
+
+  var noBookings = 0;
+  const bookingNo = document.getElementById("bookingNo");
+  const table = document.getElementById("bookings");
+
+  getDocs(bookings)
+    .then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        var rowCount = table.rows.length;
+        var row = table.insertRow(rowCount);
+
+        var cell;
+        cell = row.insertCell(0);
+        cell.innerHTML = "<td>" + doc.id + "</td>";
+
+        cell = row.insertCell(1);
+        cell.innerHTML = "<td>" + doc.get("bookingDesc") + "</td>";
+
+        cell = row.insertCell(2);
+        cell.innerHTML = "<td>" + doc.get("datetime").toDate() + "</td>";
+
+        noBookings++;
+        bookingNo.innerHTML = "You have " + noBookings + " bookings.";
+      })
+    })
+    .catch((error) => {
+      alert("error with retrieving bookings.");
+      console.log(error);
     });
 }

@@ -67,9 +67,21 @@
         <div class="align-items-center justify-content-between">
           <div>
             <h1>Hello,<span id="userName" class="text-warning text-center"> User </span>!</h1>
-            <p class="my-4 text-center">You have X upcoming bookings.</p>
+            <p class="my-4 text-center" id="bookingNo">You have X upcoming bookings.</p>
           </div>
         </div>
+      </div>
+
+      <div class="container">
+        <table class="table" id="bookings">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">Booking ID</th>
+              <th scope="col">Booking Type</th>
+              <th scope="col">Date & Time</th>
+            </tr>
+          </thead>
+        </table>
       </div>
     </section>
 
