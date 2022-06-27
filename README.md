@@ -232,6 +232,8 @@ addressed in Milestone 3.
 - There can be further improvements made to the current database design. 
 - More stringent database security rules can be enforced in the Firebase console. 
 This will be pursued during Milestone 3 subject to time constraints.
+- When a user updates their email, the user's existing bookings are not updated and are lost 
+unless they revert back to their original email. This backend issue will be addressed in Milestone 3.
 
 
 ### Further Extensions:
