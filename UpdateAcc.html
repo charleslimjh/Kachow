@@ -20,7 +20,7 @@
   </head>
   <body id="body" style="display: none">
     <!-- Nav bar -->
-    <nav class="navbar navbar-expand-lg bg-white navbar-light py-3 fixed-top">
+    <nav class="navbar navbar-expand-lg bg-white navbar-light py-3 fixed-top" style="height: 100px">
       <div class="container-fluid">
         <a href="main.html" class="navbar-brand"
           ><img
@@ -41,7 +41,7 @@
         <div class="collapse navbar-collapse" id="navmenu">
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
-              <a href="#" class="nav-link">Booking</a>
+              <a href="Booking.html" class="nav-link">Booking</a>
             </li>
             <li class="nav-item">
               <a href="#" class="nav-link">Top up</a>
@@ -74,7 +74,7 @@
                 </div>
               </div>
               <div class="card-body">
-                <form>
+                <form onsubmit="event.preventDefault();">
                   <!-- User Info -->
                   <h6 class="heading-small text-muted mb-4">
                     User information
