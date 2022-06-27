@@ -58,3 +58,18 @@ signOutLink.addEventListener("click", () => {
       console.log("Error occurred.");
     });
 });
+
+function getInfo(user) {
+  const message = document.getElementById("confirmationMessage");
+  const booking = sessionStorage.getItem("booking");
+  const date = sessionStorage.getItem("date");
+  const time = sessionStorage.getItem("time");
+  message.innerText =
+    "You have successfully booked " +
+    booking +
+    " at " +
+    date +
+    ", " +
+    time +
+    ".";
+}

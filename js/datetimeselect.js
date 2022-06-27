@@ -120,6 +120,8 @@ function addData() {
             user: auth.currentUser.email,
             datetime: date + " " + time,
           }).then(() => {
+            sessionStorage.setItem("date", date);
+            sessionStorage.setItem("time", time);
             window.location.replace("confirmation.html");
           }).catch((error) => {
             alert("error");
