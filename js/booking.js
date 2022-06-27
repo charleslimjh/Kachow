@@ -51,3 +51,13 @@ signOutLink.addEventListener("click", () => {
       console.log("Error occurred.");
     });
 });
+
+// Link booking page to datepicker page
+const testLesson = document.querySelectorAll(".dropdown-item")
+testLesson.forEach(function(item) {
+  item.addEventListener('click', function() {
+    sessionStorage.setItem("category", item.parentElement.parentElement.id);
+    sessionStorage.setItem("booking", item.innerHTML);
+    window.location.replace('DateTimeSelect.html');
+  })
+})
