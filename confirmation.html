@@ -14,16 +14,18 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css"
     />
+    <script type="module" src="js/confirmation.js"></script>
     <link rel="stylesheet" href="./css/index.css" />
-    <script type="module" src="js/main.js"></script>
-    <title>BBDC Portal</title>
+    <title>Booking</title>
   </head>
-
   <body id="body" style="display: none">
-    <!-- Nav bar -->
-    <nav class="navbar navbar-expand-lg bg-white navbar-light py-3 fixed-top">
+    <!-- Nav Bar -->
+    <nav
+      class="navbar navbar-expand-lg bg-white navbar-light py-3 fixed-top"
+      style="height: 100px"
+    >
       <div class="container-fluid">
-        <a href="#" class="navbar-brand"
+        <a href="main.html" class="navbar-brand"
           ><img
             class="img-fluid w-50 d-none d-sm-block"
             src="img/BBDC logo.png"
@@ -42,7 +44,7 @@
         <div class="collapse navbar-collapse" id="navmenu">
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
-              <a href="booking.html" class="nav-link">Booking</a>
+              <a href="Booking.html" class="nav-link">Booking</a>
             </li>
             <li class="nav-item">
               <a href="#" class="nav-link">Top up</a>
@@ -51,39 +53,43 @@
               <a href="#" class="nav-link">Forum</a>
             </li>
             <li class="nav-item">
-              <a href="account.html" class="nav-link">My Account</a>
+              <a href="Account.html" class="nav-link">My Account</a>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link" id="signOut">Sign out</a>
+              <a href="#" id="signOut" class="nav-link">Sign out</a>
             </li>
           </ul>
         </div>
       </div>
     </nav>
 
-    <!--Welcome -->
-    <section class="bg-white text-dark p-5 p-lg-0 pt-lg-5 text-center">
-      <div class="container">
-        <div class="align-items-center justify-content-between">
-          <div>
-            <h1>Hello,<span id="userName" class="text-warning text-center"> User </span>!</h1>
-            <p class="my-4 text-center" id="bookingNo">You have X upcoming bookings.</p>
+    <!-- Confirmation Message -->
+    <div class="container-fluid px-0 px-sm-4 mx-auto pt-5">
+      <div class="row justify-content-center mx-0">
+        <div class="col-lg-10">
+          <div class="card border-0">
+            <div class="card-header bg-dark text-light text-center">
+              <h3>Booking Completed!</h3>
+              <h4 id="confirmationMessage">
+                You have successfully booked xxx at x.xxpm
+              </h4>
+              <p>
+                Please arrive 15 minutes before starting time. See you soon!
+              </p>
+              <div class="Back">
+                <div class="col-md-2 text-right text-nowrap">
+                  <a href="main.html">
+                    <button type="button" class="btn btn-dark">
+                      Back to Main Menu
+                    </button>
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-
-      <div class="container">
-        <table class="table" id="bookings">
-          <thead class="thead-dark">
-            <tr>
-              <th scope="col">Booking ID</th>
-              <th scope="col">Booking Type</th>
-              <th scope="col">Date & Time</th>
-            </tr>
-          </thead>
-        </table>
-      </div>
-    </section>
+    </div>
 
     <!-- JQuery, Popper and BootstrapJS CDN -->
     <script
