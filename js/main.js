@@ -97,7 +97,7 @@ function getInfo(user) {
         cell.innerHTML = "<td>" + doc.get("bookingDesc") + "</td>";
 
         cell = row.insertCell(2);
-        cell.innerHTML = "<td>" + doc.get("datetime").toDate() + "</td>";
+        cell.innerHTML = "<td>" + doc.get("datetime") + "</td>";
 
         noBookings++;
         bookingNo.innerHTML = "You have " + noBookings + " bookings.";
