@@ -243,7 +243,7 @@ Help Chatbot in our web application.
 We will start planning and implementing this feature subject to time constraints.
 
 # Other Links
-- [Project Poster](https://drive.google.com/file/d/1XjNX19q6VD3UyhUgE7Wgi3L301ELKpub/view?usp=sharing)
-- [Project Video](https://drive.google.com/file/d/1pg-N62fxiEzsbaExhlBiufve4H0gviJB/view?usp=sharing)
+- [Project Poster](https://drive.google.com/file/d/1BxJ0CcB72xjCnpuBdjH_11S-nFVwN5h6/view?usp=sharing)
+- [Project Video](https://drive.google.com/file/d/1Yt0aghiwqnVy10Bfe8SICkAHwOL4B4ZS/view?usp=sharing)
 - [Project Log](https://docs.google.com/spreadsheets/d/1qyYAI4xEDxlCCG3IyzlDAnqgQwfhd_8biwHQM1JzAqI/edit?usp=sharing)
 - [Figma Prototype (WIP)](https://www.figma.com/proto/2vEriPljl65Etd0ZpulQhw/Kachow!?node-id=221%3A1919&scaling=scale-down&page-id=221%3A1890&starting-point-node-id=221%3A1919&show-proto-sidebar=1)
