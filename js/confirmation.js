@@ -72,4 +72,8 @@ function getInfo(user) {
     ", " +
     time +
     ".";
+  sessionStorage.removeItem('booking');
+  sessionStorage.removeItem('category');
+  sessionStorage.removeItem('time');
+  sessionStorage.removeItem('date');
 }
