@@ -4,6 +4,13 @@ import {
   getAuth,
   signInWithEmailAndPassword,
 } from "https://www.gstatic.com/firebasejs/9.8.2/firebase-auth.js";
+import {
+  getFirestore,
+  getDocs,
+  collection,
+  query,
+  where
+} from "https://www.gstatic.com/firebasejs/9.8.2/firebase-firestore.js";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -19,25 +26,40 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const auth = getAuth();
+const auth = getAuth(app);
+const db = getFirestore(app);
 
-// References
+// Login Handler
 const email = document.getElementById("loginEmail");
 const pass = document.getElementById("loginPassword");
 const form = document.getElementById("loginForm");
 
 form.addEventListener("submit", function () {
-  console.log(email.value, pass.value);
   signInWithEmailAndPassword(auth, email.value, pass.value)
     .then((userCredential) => {
       const user = userCredential.user;
-      console.log("login successful");
-      window.location.replace("main.html");
+      const q = query(
+        collection(db, "accounts"),
+        where("email", "==", email.value)
+      );
+      getDocs(q)
+        .then((querySnapshot) => {
+          const res = querySnapshot.docs[0];
+          sessionStorage.setItem("userId", res.id);
+          alert("Login successful! Redirecting to portal...");
+          window.location.replace("main.html");
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          alert("Server error! Try again.");
+          console.log(error);
+        });
     })
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
       console.log(error);
-      alert("Invalid account credentials!")
+      alert("Invalid account credentials!");
     });
 });

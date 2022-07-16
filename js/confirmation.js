@@ -47,10 +47,10 @@ auth.onAuthStateChanged((user) => {
 // Signout logic
 let signOutLink = document.getElementById("signOut");
 signOutLink.addEventListener("click", () => {
-  console.log("logging out");
   signOut(auth)
     .then(() => {
       // Sign-out successful.
+      sessionStorage.removeItem("userId");
       window.location.replace("index.html");
     })
     .catch((error) => {
@@ -72,4 +72,8 @@ function getInfo(user) {
     ", " +
     time +
     ".";
+  sessionStorage.removeItem('booking');
+  sessionStorage.removeItem('category');
+  sessionStorage.removeItem('time');
+  sessionStorage.removeItem('date');
 }

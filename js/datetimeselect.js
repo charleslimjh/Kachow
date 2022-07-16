@@ -36,6 +36,9 @@ const db = getFirestore(app);
 auth.onAuthStateChanged((user) => {
   if (user) {
     document.getElementById("body").style.display = "block";
+    if (sessionStorage.getItem("category") == null) {
+      window.location.replace("/booking.html");
+    }
   } else {
     window.location.replace("/index.html");
   }
@@ -44,10 +47,10 @@ auth.onAuthStateChanged((user) => {
 // Signout logic
 let signOutLink = document.getElementById("signOut");
 signOutLink.addEventListener("click", () => {
-  console.log("logging out");
   signOut(auth)
     .then(() => {
       // Sign-out successful.
+      sessionStorage.removeItem("userId");
       window.location.replace("index.html");
     })
     .catch((error) => {
@@ -117,7 +120,7 @@ function addData() {
           );
           setDoc(recordsRef, {
             bookingDesc: booking,
-            user: auth.currentUser.email,
+            user: sessionStorage.getItem('userId'),
             datetime: date + " " + time,
           }).then(() => {
             sessionStorage.setItem("date", date);

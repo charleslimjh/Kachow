@@ -47,10 +47,10 @@ auth.onAuthStateChanged((user) => {
 // Signout logic
 let signOutLink = document.getElementById("signOut");
 signOutLink.addEventListener("click", () => {
-  console.log("logging out");
   signOut(auth)
     .then(() => {
       // Sign-out successful.
+      sessionStorage.removeItem("userId");
       window.location.replace("index.html");
     })
     .catch((error) => {
@@ -61,11 +61,11 @@ signOutLink.addEventListener("click", () => {
 
 // Display account info
 function getInfo(user) {
-  const account = user.email;
+  const account = sessionStorage.getItem('userId');
   const docRef = doc(db, "accounts", account);
   getDoc(docRef)
     .then((docSnap) => {
-      // Placeholder code to display information
+      // Display name
       const name = document.getElementById("userName");
       name.innerText = " " + docSnap.get("firstName") + " ";
     })
@@ -104,7 +104,7 @@ function getInfo(user) {
       })
     })
     .catch((error) => {
-      alert("error with retrieving bookings.");
+      alert("Error with retrieving bookings.");
       console.log(error);
     });
 }
