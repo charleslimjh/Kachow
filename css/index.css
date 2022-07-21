@@ -14,8 +14,15 @@ body {
 }
 
 .modal-login {
-  width: 320px;
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
+
 .modal-login .modal-content {
   border-radius: 1px;
   border: none;
