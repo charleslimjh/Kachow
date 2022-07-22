@@ -112,7 +112,11 @@
         </div>
       </div>
 
-      <form class="form needs-validation" id="form" onSubmit="event.preventDefault();">
+      <form
+        class="form needs-validation"
+        id="form"
+        onSubmit="event.preventDefault();"
+      >
         <!-- Date picker -->
         <div class="row justify-content-center mx-auto mt-5">
           <label for="datetimepicker4" class="col-lg-2 col-form-label"
@@ -140,44 +144,6 @@
                 <span class="fa-solid fa-calendar"></span>
               </span>
             </div>
-          </div>
-        </div>
-
-        <!-- Time picker -->
-        <div class="row justify-content-center mx-auto mt-5">
-          <div class="col-lg-2">
-            <label for="datetimepicker4" class="col-form-label"
-              >Select Time:</label
-            >
-          </div>
-          <div class="col-lg-6">
-            <select class="form-select" id="time" required>
-              <option selected value="" disabled>Select time</option>
-              <option value="9:00">9:00</option>
-              <option value="9:30">9:30</option>
-              <option value="10:00">10:00</option>
-              <option value="10:30">10:30</option>
-              <option value="11:00">11:00</option>
-              <option value="11:30">11:30</option>
-              <option value="12:00">12:00</option>
-              <option value="12:30">12:30</option>
-              <option value="13:00">13:00</option>
-              <option value="13:30">13:30</option>
-              <option value="14:00">14:00</option>
-              <option value="14:30">14:30</option>
-              <option value="15:00">15:00</option>
-              <option value="15:30">15:30</option>
-              <option value="16:00">16:00</option>
-              <option value="16:30">16:30</option>
-              <option value="17:00">17:00</option>
-              <option value="17:30">17:30</option>
-              <option value="18:00">18:00</option>
-              <option value="18:30">18:30</option>
-              <option value="19:00">19:00</option>
-              <option value="19:30">19:30</option>
-              <option value="20:00">20:00</option>
-              <option value="20:30">20:30</option>
-            </select>
           </div>
         </div>
 
@@ -217,13 +183,12 @@
     ></script>
     <!-- Tempus Dominus JavaScript -->
     <script
-      src="https://cdn.jsdelivr.net/npm/@eonasdan/tempus-dominus@6.0.0-beta7/dist/js/tempus-dominus.min.js"
+      src="https://cdn.jsdelivr.net/gh/Eonasdan/tempus-dominus@master/dist/js/tempus-dominus.js"
       crossorigin="anonymous"
     ></script>
-
     <!-- Tempus Dominus Styles -->
     <link
-      href="https://cdn.jsdelivr.net/npm/@eonasdan/tempus-dominus@6.0.0-beta7/dist/css/tempus-dominus.css"
+      href="https://cdn.jsdelivr.net/gh/Eonasdan/tempus-dominus@master/dist/css/tempus-dominus.css"
       rel="stylesheet"
       crossorigin="anonymous"
     />

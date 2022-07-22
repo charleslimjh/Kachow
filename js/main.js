@@ -15,6 +15,7 @@ import {
   getDocs,
   addDoc,
   collection,
+  orderBy,
 } from "https://www.gstatic.com/firebasejs/9.8.2/firebase-firestore.js";
 
 // Your web app's Firebase configuration
@@ -61,7 +62,7 @@ signOutLink.addEventListener("click", () => {
 
 // Display account info
 function getInfo(user) {
-  const account = sessionStorage.getItem('userId');
+  const account = sessionStorage.getItem("userId");
   const docRef = doc(db, "accounts", account);
   getDoc(docRef)
     .then((docSnap) => {
@@ -76,7 +77,8 @@ function getInfo(user) {
   // TODO: modify query to only retrieve upcoming bookings
   const bookings = query(
     collectionGroup(db, "records"),
-    where("user", "==", account)
+    where("user", "==", account),
+    orderBy("datetime")
   );
 
   var noBookings = 0;
@@ -86,22 +88,25 @@ function getInfo(user) {
   getDocs(bookings)
     .then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
-        var rowCount = table.rows.length;
-        var row = table.insertRow(rowCount);
+        var date = doc.get("datetime").split(", ").join(" ");
+        if (Date.parse(date) > Date.now()) {
+          var rowCount = table.rows.length;
+          var row = table.insertRow(rowCount);
 
-        var cell;
-        cell = row.insertCell(0);
-        cell.innerHTML = "<td>" + doc.id + "</td>";
+          var cell;
+          cell = row.insertCell(0);
+          cell.innerHTML = "<td>" + doc.id + "</td>";
 
-        cell = row.insertCell(1);
-        cell.innerHTML = "<td>" + doc.get("bookingDesc") + "</td>";
+          cell = row.insertCell(1);
+          cell.innerHTML = "<td>" + doc.get("bookingDesc") + "</td>";
 
-        cell = row.insertCell(2);
-        cell.innerHTML = "<td>" + doc.get("datetime") + "</td>";
+          cell = row.insertCell(2);
+          cell.innerHTML = "<td>" + doc.get("datetime") + "</td>";
 
-        noBookings++;
-        bookingNo.innerHTML = "You have " + noBookings + " bookings.";
-      })
+          noBookings++;
+          bookingNo.innerHTML = "You have " + noBookings + " bookings.";
+        }
+      });
     })
     .catch((error) => {
       alert("Error with retrieving bookings.");
