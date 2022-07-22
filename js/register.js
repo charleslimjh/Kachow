@@ -10,7 +10,7 @@ import {
   getDocs,
   collection,
   query,
-  where
+  where,
 } from "https://www.gstatic.com/firebasejs/9.8.2/firebase-firestore.js";
 
 // Your web app's Firebase configuration
@@ -123,5 +123,23 @@ loginForm.addEventListener("submit", function () {
       const errorMessage = error.message;
       console.log(error);
       alert("Invalid account credentials! Try again.");
+    });
+});
+
+// Forget password handler
+const forgetForm = document.getElementById("forgetPassForm");
+forgetForm.addEventListener("submit", function () {
+  const forgetEmail = document.getElementById("forgetPassEmail").value;
+  sendPasswordResetEmail(auth, forgetEmail)
+    .then(() => {
+      alert(
+        "Password reset link has been sent to your email. Please check your email (especially your spam folder!) for further instructions."
+      );
+      window.location.replace("index.html");
+    })
+    .catch((error) => {
+      alert(
+        "User not found in our database. Please sign up for an account instead."
+      );
     });
 });
