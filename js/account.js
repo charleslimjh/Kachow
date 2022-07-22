@@ -41,10 +41,10 @@ auth.onAuthStateChanged((user) => {
 // Signout logic
 let signOutLink = document.getElementById("signOut");
 signOutLink.addEventListener("click", () => {
-  console.log("logging out");
   signOut(auth)
     .then(() => {
       // Sign-out successful.
+      sessionStorage.removeItem("userId");
       window.location.replace("index.html");
     })
     .catch((error) => {
@@ -55,7 +55,7 @@ signOutLink.addEventListener("click", () => {
 
 // Display account info
 function getInfo(user) {
-  const account = user.email;
+  const account = sessionStorage.getItem('userId');
   const docRef = doc(db, "accounts", account);
   getDoc(docRef)
     .then((docSnap) => {
@@ -68,7 +68,7 @@ function getInfo(user) {
       const postal = document.getElementById("input-postal-code");
 
       name.value = docSnap.get("lastName") + ", " + docSnap.get("firstName");
-      email.value = account;
+      email.value = docSnap.get("email");
       contact.value = docSnap.get("phone");
       course.value = docSnap.get("course");
       address.value = docSnap.get("address");
