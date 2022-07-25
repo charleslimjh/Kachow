@@ -71,10 +71,10 @@
     </nav>
       
     <!-- Login -->
-    <section class="loginForm">
+    <section class="loginForm" style="vertical-align:middle; display: inline-block;">
       <div id="logIn" class="modal fade" role="dialog">
-        <div class="modal-dialog modal-login">
-          <div class="modal-content">
+        <div class="modal-dialog modal-login" style="vertical-align:middle; display: inline-block;">
+          <div class="modal-content" style="vertical-align:middle; display: inline-block;">
             <form onSubmit="event.preventDefault();" id="loginForm">
               <div class="modal-header">
                 <h4 class="modal-title">Login</h4>
@@ -175,6 +175,28 @@
                 </button>
               </form>
             </div>
+          </div>
+        </div>
+      </div>
+    </section>
+      
+      <!-- Reset Password Modal -->
+      <div class="modal fade" id="at-reset-pswd" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+            </div>
+            <div class="modal-body">
+              <form onSubmit="event.preventDefault();">
+                <p>NOTE: THIS FEATURE IS A WORK IN PROGRESS</p>
+                <p>Enter the email address associated with your account, and we’ll email you a link to reset your password.</p>
+                <div class="form-group">
+                  <input type="email" class="form-control-form " id="resetEmail" placeholder="Email">
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer"></div>
           </div>
         </div>
       </div>
