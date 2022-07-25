@@ -3,15 +3,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.2/firebase
 import {
   getAuth,
   signInWithEmailAndPassword,
-  sendPasswordResetEmail,
 } from "https://www.gstatic.com/firebasejs/9.8.2/firebase-auth.js";
-import {
-  getFirestore,
-  getDocs,
-  collection,
-  query,
-  where,
-} from "https://www.gstatic.com/firebasejs/9.8.2/firebase-firestore.js";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -27,58 +19,25 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const db = getFirestore(app);
+const auth = getAuth();
 
-// Login Handler
+// References
 const email = document.getElementById("loginEmail");
 const pass = document.getElementById("loginPassword");
 const form = document.getElementById("loginForm");
 
 form.addEventListener("submit", function () {
+  console.log(email.value, pass.value);
   signInWithEmailAndPassword(auth, email.value, pass.value)
     .then((userCredential) => {
       const user = userCredential.user;
-      const q = query(
-        collection(db, "accounts"),
-        where("email", "==", email.value)
-      );
-      getDocs(q)
-        .then((querySnapshot) => {
-          const res = querySnapshot.docs[0];
-          sessionStorage.setItem("userId", res.id);
-          alert("Login successful! Redirecting to portal...");
-          window.location.replace("main.html");
-        })
-        .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          alert("Server error! Try again.");
-          console.log(error);
-        });
+      console.log("login successful");
+      window.location.replace("main.html");
     })
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
       console.log(error);
-      alert("Invalid account credentials!");
-    });
-});
-
-// Forget password handler
-const forgetForm = document.getElementById("forgetPassForm");
-forgetForm.addEventListener("submit", function () {
-  const forgetEmail = document.getElementById("forgetPassEmail").value;
-  sendPasswordResetEmail(auth, forgetEmail)
-    .then(() => {
-      alert(
-        "Password reset link has been sent to your email. Please check your email (especially your spam folder!) for further instructions."
-      );
-      window.location.replace("index.html");
-    })
-    .catch((error) => {
-      alert(
-        "User not found in our database. Please sign up for an account instead."
-      );
+      alert("Invalid account credentials!")
     });
 });
