@@ -28,6 +28,9 @@
 	- [Chats Table](#chats-table)
 	- [5.3 Security](#53-security)
 - [6. Testing](#6-testing)
+	- [6.1 Manual Testing](#61-manual-testing)
+	- [6.2 User Acceptance Testing](#62-user-acceptance-testing)
+	- [6.3 Unit Testing](#63-unit-testing)
 - [7. Software Design Principles](#7-software-design-principles)
 	- [7.1 Separation of Concerns Principles](#71-separation-of-concerns-principles)
 	- [7.2 Single Responsibility Principle](#72-single-responsibility-principle)
@@ -155,8 +158,8 @@ To retrieve/write data to our database, the client will send API calls to Cloud 
 |M2|30/5 - 5/6|Learn technologies + address peer evaluation and peer feedback|
 |M2|6/6 - 19/6|CRUD Functionality for Profiles, Bookings and Account Balances|
 |M2|20/6 - 26/6|User Testing, start implementing Telegram Bot|
-|M3|27/6 - 3/7|Finish Telegram Bot|
-|M3|4/7 - 10/7|Web Forum Integration|
+|M3|27/6 - 3/7|Finish Telegram Bot + Bug Fixes|
+|M3|4/7 - 10/7|Web Forum Integration + Bug Fixes|
 |M3|11/7 - 17/7|Unit/Integration/Manual Testing|
 |M3|18/7 - 24/7|User Testing|
 
@@ -330,6 +333,41 @@ Cloud Firestore also has security rules in place which only allow registered use
 
 # 6. Testing
 
+## 6.1 Manual Testing
+
+## 6.2 User Acceptance Testing
+We surveyed 15 users who are students/alumni of BBDC. We walked through the app with them and conducted an interview with them, inquiring on the following features:
+
+**Overall**
+- Is the app intuitive and easy to use?
+- Are the features sufficient? What else would you like to see in the app?
+
+**Registration/Login**
+- Is the login/registration process easy?
+- Is it easy to reset your password? Does the feature work well?
+
+**Bookings**
+- Are the 3 dropdown menus easy to understand and effective?
+- Is it easy to select dates and times?
+- Are the bookings displayed accurately and in an intuitive way?
+
+**Forum**
+- Is it simple to use the forum (make posts, make comments)?
+- Is it acceptable to be redirected to an external platform?
+- Would the forum be beneficial to students of BBDC in terms of their learning?
+
+**Telegram Bot**
+- Is it difficult to set up the Telegram bot?
+- Are the reminders function useful?
+
+The results of the interviews can be found in this [spreadsheet](https://docs.google.com/spreadsheets/d/15KIjIOQ-JXxQaFujBL1RgQek3loMWcFEWfjTsPxXfO4/edit#gid=0).
+
+## 6.3 Unit Testing
+Automated unit testing on static HTML pages was achieved by using Selenium IDE for Chrome. We focused on checking the links between pages to make sure that they work on the various web pages. The files can be found in the `selenium-tests` folder. For more information on Selenium IDE, you can refer to their website [here](https://www.selenium.dev/selenium-ide/).
+
+For the Telegram bot, we utilized the `telegraf-test` library to conduct some simple unit tests. The test files can be found in KachowTelebot's [repo](https://github.com/charleslimjh/KachowTelebot). More information on `telegraf-test` can be found at the library's Github [repo](https://github.com/TiagoDanin/Telegraf-Test).
+
+
 # 7. Software Design Principles
 The following lists some of the software design principles adopted in this project, with reference to the CS2103/T Online Textbook linked [here](https://nus-cs2103-ay2021s1.github.io/website/se-book-adapted/index.html).
 
@@ -417,6 +455,7 @@ We set up CI/CD with Netlify by enabling the *Deploy Previews* feature. A Deploy
 - We have received feedback that account top-ups are a crucial feature to users of our platform. We regretably did not pursue this feature due to time constraints.
 - More stringent database security rules can be enforced in the Firebase console. 
 - We also plan to look into booking cancellation features, including a *trysell* feature that allows students to sell their slots to other students.
+- Additional configuration can be done for the web forum such that the user accounts for the BBDC portal can also be used for web forum, instead of having to create a separate account for the platform.
 
 # Other Links
 - [Project Poster](https://drive.google.com/file/d/1BxJ0CcB72xjCnpuBdjH_11S-nFVwN5h6/view?usp=sharing)
