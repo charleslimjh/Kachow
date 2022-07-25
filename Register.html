@@ -139,6 +139,7 @@
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
+              <h3 class="my-auto">Reset Password</h3>
               <button
                 type="button"
                 class="close"
@@ -149,22 +150,31 @@
               </button>
             </div>
             <div class="modal-body">
-              <form>
+              <form onSubmit="event.preventDefault();" id="forgetPassForm">
                 <p>
                   Enter the email address associated with your account, and
                   we’ll email you a link to reset your password.
                 </p>
                 <div class="form-group">
+                  <label for="forgetPassEmail">Email:</label>
                   <input
                     type="email"
                     class="form-control-form"
-                    id="exampleInputEmaillog"
-                    placeholder="Email"
+                    id="forgetPassEmail"
+                    required
                   />
                 </div>
+            </div>
+            <div class="modal-footer">
+              <button
+                  type="submit"
+                  class="btn btn-primary submit"
+                  id="forgotPassSubmit"
+                >
+                  Reset Password
+                </button>
               </form>
             </div>
-            <div class="modal-footer"></div>
           </div>
         </div>
       </div>

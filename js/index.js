@@ -3,13 +3,14 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.2/firebase
 import {
   getAuth,
   signInWithEmailAndPassword,
+  sendPasswordResetEmail,
 } from "https://www.gstatic.com/firebasejs/9.8.2/firebase-auth.js";
 import {
   getFirestore,
   getDocs,
   collection,
   query,
-  where
+  where,
 } from "https://www.gstatic.com/firebasejs/9.8.2/firebase-firestore.js";
 
 // Your web app's Firebase configuration
@@ -61,5 +62,23 @@ form.addEventListener("submit", function () {
       const errorMessage = error.message;
       console.log(error);
       alert("Invalid account credentials!");
+    });
+});
+
+// Forget password handler
+const forgetForm = document.getElementById("forgetPassForm");
+forgetForm.addEventListener("submit", function () {
+  const forgetEmail = document.getElementById("forgetPassEmail").value;
+  sendPasswordResetEmail(auth, forgetEmail)
+    .then(() => {
+      alert(
+        "Password reset link has been sent to your email. Please check your email (especially your spam folder!) for further instructions."
+      );
+      window.location.replace("index.html");
+    })
+    .catch((error) => {
+      alert(
+        "User not found in our database. Please sign up for an account instead."
+      );
     });
 });
