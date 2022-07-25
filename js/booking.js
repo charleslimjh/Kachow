@@ -40,10 +40,10 @@ auth.onAuthStateChanged((user) => {
 // Signout logic
 let signOutLink = document.getElementById("signOut");
 signOutLink.addEventListener("click", () => {
+  console.log("logging out");
   signOut(auth)
     .then(() => {
       // Sign-out successful.
-      sessionStorage.removeItem("userId");
       window.location.replace("index.html");
     })
     .catch((error) => {

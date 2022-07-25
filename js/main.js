@@ -15,7 +15,6 @@ import {
   getDocs,
   addDoc,
   collection,
-  orderBy,
 } from "https://www.gstatic.com/firebasejs/9.8.2/firebase-firestore.js";
 
 // Your web app's Firebase configuration
@@ -48,10 +47,10 @@ auth.onAuthStateChanged((user) => {
 // Signout logic
 let signOutLink = document.getElementById("signOut");
 signOutLink.addEventListener("click", () => {
+  console.log("logging out");
   signOut(auth)
     .then(() => {
       // Sign-out successful.
-      sessionStorage.removeItem("userId");
       window.location.replace("index.html");
     })
     .catch((error) => {
@@ -62,11 +61,11 @@ signOutLink.addEventListener("click", () => {
 
 // Display account info
 function getInfo(user) {
-  const account = sessionStorage.getItem("userId");
+  const account = user.email;
   const docRef = doc(db, "accounts", account);
   getDoc(docRef)
     .then((docSnap) => {
-      // Display name
+      // Placeholder code to display information
       const name = document.getElementById("userName");
       name.innerText = " " + docSnap.get("firstName") + " ";
     })
@@ -77,8 +76,7 @@ function getInfo(user) {
   // TODO: modify query to only retrieve upcoming bookings
   const bookings = query(
     collectionGroup(db, "records"),
-    where("user", "==", account),
-    orderBy("datetime")
+    where("user", "==", account)
   );
 
   var noBookings = 0;
@@ -88,28 +86,25 @@ function getInfo(user) {
   getDocs(bookings)
     .then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
-        var date = doc.get("datetime").split(", ").join(" ");
-        if (Date.parse(date) > Date.now()) {
-          var rowCount = table.rows.length;
-          var row = table.insertRow(rowCount);
+        var rowCount = table.rows.length;
+        var row = table.insertRow(rowCount);
 
-          var cell;
-          cell = row.insertCell(0);
-          cell.innerHTML = "<td>" + doc.id + "</td>";
+        var cell;
+        cell = row.insertCell(0);
+        cell.innerHTML = "<td>" + doc.id + "</td>";
 
-          cell = row.insertCell(1);
-          cell.innerHTML = "<td>" + doc.get("bookingDesc") + "</td>";
+        cell = row.insertCell(1);
+        cell.innerHTML = "<td>" + doc.get("bookingDesc") + "</td>";
 
-          cell = row.insertCell(2);
-          cell.innerHTML = "<td>" + doc.get("datetime") + "</td>";
+        cell = row.insertCell(2);
+        cell.innerHTML = "<td>" + doc.get("datetime") + "</td>";
 
-          noBookings++;
-          bookingNo.innerHTML = "You have " + noBookings + " bookings.";
-        }
-      });
+        noBookings++;
+        bookingNo.innerHTML = "You have " + noBookings + " bookings.";
+      })
     })
     .catch((error) => {
-      alert("Error with retrieving bookings.");
+      alert("error with retrieving bookings.");
       console.log(error);
     });
 }
