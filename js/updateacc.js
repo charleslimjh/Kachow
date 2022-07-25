@@ -44,10 +44,10 @@ auth.onAuthStateChanged((user) => {
 // Signout logic
 let signOutLink = document.getElementById("signOut");
 signOutLink.addEventListener("click", () => {
+  console.log("logging out");
   signOut(auth)
     .then(() => {
       // Sign-out successful.
-      sessionStorage.removeItem("userId");
       window.location.replace("index.html");
     })
     .catch((error) => {
@@ -58,7 +58,7 @@ signOutLink.addEventListener("click", () => {
 
 // Display account info
 function getInfo(user) {
-  const account = sessionStorage.getItem("userId");
+  const account = user.email;
   const docRef = doc(db, "accounts", account);
   getDoc(docRef)
     .then((docSnap) => {
@@ -70,7 +70,7 @@ function getInfo(user) {
       const postal = document.getElementById("input-postal-code");
 
       name.value = docSnap.get("lastName") + ", " + docSnap.get("firstName");
-      email.value = docSnap.get("email");
+      email.value = account;
       contact.value = docSnap.get("phone");
       course.value = docSnap.get("course");
       address.value = docSnap.get("address");
@@ -83,40 +83,82 @@ function getInfo(user) {
 
 // update user information
 function updateUser() {
-  const account = sessionStorage.getItem("userId");
+  const account = auth.currentUser.email;
 
   const email = document.getElementById("input-email");
   const contact = document.getElementById("input-contact");
   const address = document.getElementById("input-address");
   const postal = document.getElementById("input-postal-code");
 
-  // Update Authentication record
-  updateEmail(auth.currentUser, email.value)
-    .then(() => {
-      // Update Firestore record
-      setDoc(
-        doc(db, "accounts", account),
-        {
-          phone: contact.value,
-          address: address.value,
-          postal: postal.value,
-          email: email.value,
-        },
-        { merge: true }
-      )
-        .then(() => {
-          console.log("Update success! Redirecting...");
-          window.location.replace("account.html");
-        })
-        .catch((error) => {
-          alert("Database server error, please try again later.");
-          console.log(error);
+  // no change in email, just update firestore
+  if (email.value == account) {
+    console.log("UPDATE FIRESTORE ONLY");
+    setDoc(
+      doc(db, "accounts", account),
+      {
+        phone: contact.value,
+        address: address.value,
+        postal: postal.value,
+      },
+      { merge: true }
+    )
+      .then(() => {
+        console.log("update successful");
+        window.location.replace("account.html");
+      })
+      .catch((error) => {
+        alert("an error occurred.");
+        console.log(error);
+      });
+    // email changed
+  } else {
+    console.log("UPDATE CHANGE IN EMAIL");
+    updateEmail(auth.currentUser, email.value)
+      .then(() => {
+        console.log("auth updated email!");
+        // Email updated in firebaseAuth
+        // Get old data
+        const docRef = doc(db, "accounts", account);
+        getDoc(docRef).then((docSnap) => {
+          // set new document
+          setDoc(doc(db, "accounts", email.value), {
+            firstName: docSnap.get("firstName"),
+            lastName: docSnap.get("lastName"),
+            gender: docSnap.get("gender"),
+            dob: docSnap.get("dob"),
+            course: docSnap.get("course"),
+            phone: contact.value,
+            address: address.value,
+            postal: postal.value,
+          })
+            .then(() => {
+                console.log("set new document!");
+              // delete old account record
+              deleteDoc(doc(db, "accounts", account))
+                .then(() => {
+                  console.log("all success");
+                  alert("Profile updated!");
+                  window.location.replace("account.html");
+                })
+                .catch((error) => {
+                  // An error occurred
+                  alert("an error occurred: deleting old account.");
+                  console.log(error);
+                });
+            })
+            .catch((error) => {
+              // An error occurred
+              alert("an error occurred: creating new account.");
+              console.log(error);
+            });
         });
-    })
-    .catch((error) => {
-      alert("Authentication server error, please try again later.");
-      console.log(error);
-    });
+      })
+      .catch((error) => {
+        // An error occurred
+        alert("an error occurred: updating email in auth.");
+        console.log(error);
+      });
+  }
 }
 
 const submitButton = document.getElementById("submit");
