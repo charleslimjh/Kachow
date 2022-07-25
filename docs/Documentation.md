@@ -458,6 +458,4 @@ We set up CI/CD with Netlify by enabling the *Deploy Previews* feature. A Deploy
 - Additional configuration can be done for the web forum such that the user accounts for the BBDC portal can also be used for web forum, instead of having to create a separate account for the platform.
 
 # Other Links
-- [Project Poster](https://drive.google.com/file/d/1BxJ0CcB72xjCnpuBdjH_11S-nFVwN5h6/view?usp=sharing)
-- [Project Video](https://drive.google.com/file/d/1Yt0aghiwqnVy10Bfe8SICkAHwOL4B4ZS/view?usp=sharing)
 - [Figma Prototype (Unfinished Draft)](https://www.figma.com/proto/2vEriPljl65Etd0ZpulQhw/Kachow!?node-id=221%3A1919&scaling=scale-down&page-id=221%3A1890&starting-point-node-id=221%3A1919&show-proto-sidebar=1)
