@@ -2,12 +2,16 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.2/firebase
 import {
   getAuth,
   createUserWithEmailAndPassword,
-  signInWithEmailAndPassword
+  signInWithEmailAndPassword,
+  sendPasswordResetEmail
 } from "https://www.gstatic.com/firebasejs/9.8.2/firebase-auth.js";
 import {
   getFirestore,
-  setDoc,
-  doc,
+  addDoc,
+  getDocs,
+  collection,
+  query,
+  where,
 } from "https://www.gstatic.com/firebasejs/9.8.2/firebase-firestore.js";
 
 // Your web app's Firebase configuration
@@ -27,8 +31,8 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
-const form = document.getElementById('registerForm');
-form.addEventListener('submit', createUser);
+const form = document.getElementById("registerForm");
+form.addEventListener("submit", createUser);
 
 // Add a new user
 function createUser() {
@@ -58,22 +62,25 @@ function createUser() {
       const user = userCredential.user;
 
       // add account details to Firestore
-      setDoc(doc(db, "accounts", email), {
+      addDoc(collection(db, "accounts"), {
         firstName: firstName,
         lastName: lastName,
         dob: dob,
         gender: gender,
         phone: phone,
+        email: email,
         address: address,
         postal: postalCode,
         course: course,
       })
-        .then(() => {
+        .then((docRef) => {
           // Login user, redirect to main page
+          sessionStorage.setItem("userId", docRef.id);
+          alert("Successfully created user, redirecting to portal...");
           window.location.replace("main.html");
         })
         .catch((error) => {
-          alert("Server error, try again!")
+          alert("Server error, try again!");
           console.log(error);
         });
     })
@@ -85,7 +92,7 @@ function createUser() {
     });
 }
 
-// login handlers
+// Login Handler
 const email = document.getElementById("loginEmail");
 const pass = document.getElementById("loginPassword");
 const loginForm = document.getElementById("loginForm");
@@ -94,12 +101,46 @@ loginForm.addEventListener("submit", function () {
   signInWithEmailAndPassword(auth, email.value, pass.value)
     .then((userCredential) => {
       const user = userCredential.user;
-      window.location.replace("main.html");
+      const q = query(
+        collection(db, "accounts"),
+        where("email", "==", email.value)
+      );
+      getDocs(q)
+        .then((querySnapshot) => {
+          const res = querySnapshot.docs[0];
+          sessionStorage.setItem("userId", res.id);
+          alert("Login successful! Redirecting to portal...");
+          window.location.replace("main.html");
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          alert("Server error! Try again.");
+          console.log(error);
+        });
     })
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
-      alert("Invalid account credentials! Try again.")
       console.log(error);
+      alert("Invalid account credentials! Try again.");
+    });
+});
+
+// Forget password handler
+const forgetForm = document.getElementById("forgetPassForm");
+forgetForm.addEventListener("submit", function () {
+  const forgetEmail = document.getElementById("forgetPassEmail").value;
+  sendPasswordResetEmail(auth, forgetEmail)
+    .then(() => {
+      alert(
+        "Password reset link has been sent to your email. Please check your email (especially your spam folder!) for further instructions."
+      );
+      window.location.replace("index.html");
+    })
+    .catch((error) => {
+      alert(
+        "User not found in our database. Please sign up for an account instead."
+      );
     });
 });

@@ -14,8 +14,15 @@ body {
 }
 
 .modal-login {
-  width: 320px;
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
+
 .modal-login .modal-content {
   border-radius: 1px;
   border: none;
@@ -79,25 +86,34 @@ body {
 }
 
 #dropdownMenuButton1 {
-  width: 420px;
-  height: 50px;
-  text-align: center;
-  line-height: 1.1em;
-  font-size: 1.1em;
+	width:420px;
+	height:50px;
+	width:100%;
+	min-height:50px;
+	text-align:center;
+	line-height:1.1em;
+	font-size:1.1em;
+	white-space: normal;
 }
 
 #dropdownMenuButton2 {
-  width: 420px;
-  height: 50px;
-  text-align: center;
-  line-height: 1.1em;
-  font-size: 1.1em;
+	width:420px;
+	height:50px;
+	width:100%;
+	min-height:50px;
+	text-align:center;
+	line-height:1.1em;
+	font-size:1.1em;
+	white-space: normal;
 }
 
 #dropdownMenuButton3 {
-  width: 420px;
-  height: 50px;
-  text-align: center;
-  line-height: 1.1em;
-  font-size: 1.1em;
-}
+	width:420px;
+	height:50px;
+	width:100%;
+	min-height:50px;
+	text-align:center;
+	line-height:1.1em;
+	font-size:1.1em;
+	white-space: normal;
+} 
