@@ -78,3 +78,8 @@ function getInfo(user) {
       console.log("something went wrong.");
     });
 }
+
+// Link Telegram Button
+document.getElementById('teleButton').addEventListener('click', (e) => {
+  window.open("https://telegram.me/kachow_testbot?start=" + sessionStorage.getItem('userId'), '_blank');
+})
